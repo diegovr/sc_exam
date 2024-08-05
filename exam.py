@@ -68,3 +68,37 @@ class Inventario:
         print("========================================")
         for producto in self.productos.values():
             print(producto)
+
+
+# Crear instancia de la clase Inventario
+inventario = Inventario()
+
+# Agregar productos iniciales
+inventario.agregar_producto(Producto(1, 'Pantalones', 200.00, 50))
+inventario.agregar_producto(Producto(2, 'Camisas', 120.00, 45))
+inventario.agregar_producto(Producto(3, 'Corbatas', 50.00, 30))
+inventario.agregar_producto(Producto(4, 'Casacas', 350.00, 15))
+
+# Bucle principal
+while True:
+    inventario.mostrar_productos()
+    opcion = int(input("[1] Agregar, [2] Eliminar, [3] Actualizar, [4] Salir\nElija opción: "))
+    if opcion == 1:
+        codigo = int(input("Ingrese el código del nuevo producto: "))
+        nombre = input("Ingrese el nombre del nuevo producto: ")
+        precio = float(input("Ingrese el precio del nuevo producto: "))
+        cantidad = int(input("Ingrese la cantidad en stock del nuevo producto: "))
+        inventario.agregar_producto(Producto(codigo, nombre, precio, cantidad))
+    elif opcion == 2:
+        codigo = int(input("Ingrese el código del producto a eliminar: "))
+        inventario.eliminar_producto(codigo)
+    elif opcion == 3:
+        codigo = int(input("Ingrese el código del producto a actualizar: "))
+        nuevo_precio = float(input("Ingrese el nuevo precio del producto: "))
+        nueva_cantidad = int(input("Ingrese la nueva cantidad en stock del producto: "))
+        inventario.actualizar_producto(codigo, nuevo_precio, nueva_cantidad)
+    elif opcion == 4:
+        print("¡Hasta luego!")
+        break
+    else:
+        print("Opción inválida.")
